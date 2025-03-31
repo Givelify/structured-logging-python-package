@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# build, dist files
+build
+dist
+givelifylogging.egg-info
+
+# Logs
+*.log
+*.log.*
