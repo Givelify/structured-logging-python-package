@@ -4,7 +4,7 @@ setup(
     name='givelifylogging',
     packages=find_packages(),
     version='0.1.0',
-    description='My first Python library',
+    description='Givelify Structured logging library',
     author='Me',
     install_requires=['python-json-logger==2.0.2'],
     setup_requires=['pytest-runner'],

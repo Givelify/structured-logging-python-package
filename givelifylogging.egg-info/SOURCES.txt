@@ -1,0 +1,13 @@
+README.md
+setup.py
+givelifylogging/CustomJsonFormatter.py
+givelifylogging/StructuredLogger.py
+givelifylogging/__init__.py
+givelifylogging.egg-info/PKG-INFO
+givelifylogging.egg-info/SOURCES.txt
+givelifylogging.egg-info/dependency_links.txt
+givelifylogging.egg-info/requires.txt
+givelifylogging.egg-info/top_level.txt
+tests/__init__.py
+tests/test_CustomJsonFormatter.py
+tests/test_StructuredLogger.py
