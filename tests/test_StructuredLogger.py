@@ -18,7 +18,7 @@ def test_default_format(caplog):
     buffer = StringIO()
     handler = logging.StreamHandler(buffer)
 
-    logger = StructuredLogger.StructuredLogger.getLogger("TEST", handler)
+    logger = StructuredLogger.StructuredLogger.getLogger("TEST", 'INFO', handler)
 
     logger.info(msg, value=val)
 
@@ -44,7 +44,7 @@ def test_default_location(caplog):
 
     buffer = StringIO()
 
-    logger = StructuredLogger.StructuredLogger.getLogger("TEST")
+    logger = StructuredLogger.StructuredLogger.getLogger("TEST", 'INFO')
 
     logger.info(msg, value=val)
 
