@@ -43,7 +43,7 @@ class StructuredLogger:
     def critical(self, message, type_="generic", value=None):
         self.log(message, type_, value, logging.CRITICAL)
 
-    def getLogger(__name__, handler=None, folder='.logs', filename='logFile'):
+    def getLogger(__name__, loglevelstr='INFO', handler=None, folder='.logs', filename='logFile'):
         if not os.path.exists(folder):
             os.makedirs(folder)
 
@@ -51,7 +51,13 @@ class StructuredLogger:
         log_file = os.path.join(folder, formatted_log_filename)
 
         base_logger = logging.getLogger(__name__)
-        base_logger.setLevel(logging.INFO)
+        loglevelstr = loglevelstr.upper()
+        if hasattr(logging, loglevelstr):
+            loggingLevel = getattr(logging, loglevelstr)
+        else:
+            loggingLevel = logging.INFO
+
+        base_logger.setLevel(loggingLevel)
 
         if not handler:
             handler = TimedRotatingFileHandler(log_file, when="midnight", interval=1, backupCount=3, encoding='utf-8')
@@ -65,7 +71,7 @@ class StructuredLogger:
 
         logger = StructuredLogger(base_logger)
         logger.setLogFile(log_file)
-        
+
         return logger
     
 
