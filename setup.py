@@ -6,7 +6,7 @@ setup(
     version='0.1.0',
     description='Givelify Structured logging library',
     author='Me',
-    install_requires=['python-json-logger==2.0.2'],
+    install_requires=['python-json-logger==2.0.7'],
     setup_requires=['pytest-runner'],
     extras_require={  # Optional
         "dev": ["check-manifest"],
