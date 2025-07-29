@@ -1,8 +1,10 @@
-import logging
 import datetime
+import logging
 import os
 from logging.handlers import TimedRotatingFileHandler
+
 from givelifylogging.CustomJsonFormatter import CustomJsonFormatter
+
 
 class StructuredLogger:
     def __init__(self, base_logger):
@@ -16,7 +18,7 @@ class StructuredLogger:
     def getLogFile(self):
         return self.filepath
     
-    def log(self, message, type_="generic", value=None, level=logging.INFO):
+    def log(self, message, type_="generic", value=None, level=logging.INFO, exc_info=False):
         if value is None:
             value = {}
         context_data = {
@@ -24,24 +26,24 @@ class StructuredLogger:
             "entity": {
                 "type": type_,
                 "value": value
-            }
+            },
         }
-        self.logger.log(level, message, extra={"context": context_data})
+        self.logger.log(level, message, extra={"context": context_data}, exc_info=exc_info)
 
-    def info(self, message, type_="generic", value=None):
-        self.log(message, type_, value, logging.INFO)
+    def info(self, message, type_="generic", value=None, exc_info=False):
+        self.log(message, type_, value, logging.INFO, exc_info=exc_info)
 
-    def warn(self, message, type_="generic", value=None):
-        self.log(message, type_, value, logging.WARNING)
+    def warn(self, message, type_="generic", value=None, exc_info=False):
+        self.log(message, type_, value, logging.WARNING, exc_info=exc_info)
 
-    def error(self, message, type_="generic", value=None):
-        self.log(message, type_, value, logging.ERROR)
+    def error(self, message, type_="generic", value=None, exc_info=False):
+        self.log(message, type_, value, logging.ERROR, exc_info=exc_info)
 
-    def debug(self, message, type_="generic", value=None):
-        self.log(message, type_, value, logging.DEBUG)
+    def debug(self, message, type_="generic", value=None, exc_info=False):
+        self.log(message, type_, value, logging.DEBUG, exc_info=exc_info)
 
-    def critical(self, message, type_="generic", value=None):
-        self.log(message, type_, value, logging.CRITICAL)
+    def critical(self, message, type_="generic", value=None, exc_info=False):
+        self.log(message, type_, value, logging.CRITICAL, exc_info=exc_info)
 
     def getLogger(__name__, loglevelstr='INFO', handler=None, folder='.logs', filename='logFile'):
         if not os.path.exists(folder):
@@ -73,5 +75,3 @@ class StructuredLogger:
         logger.setLogFile(log_file)
 
         return logger
-    
-
